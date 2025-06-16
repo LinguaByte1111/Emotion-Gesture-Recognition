@@ -6,6 +6,7 @@ A dual-mode intelligent system that detects **human emotions** through facial ex
 
 ---
 
+
 ## 🔍 Table of Contents
 
 * [About the Project](#About-the-Project)
