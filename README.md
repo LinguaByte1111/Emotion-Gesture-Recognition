@@ -153,7 +153,6 @@ EDA scripts are located in the `eda/` section (or embedded within Jupyter notebo
 
    ```bash
    pip install -r requirements.txt
-   
    ```
 
 3. **Train Models (optional)**
