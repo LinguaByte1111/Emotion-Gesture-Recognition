@@ -30,7 +30,7 @@ A dual-mode intelligent system that detects **human emotions** through facial ex
 
 The **Human Emotion and Gesture Detector** is a computer vision project that recognizes facial emotions and hand gestures either **independently or simultaneously**. The system is capable of processing real-time video feeds and predicting the corresponding emotional or gestural state of the user.
 
-✅ **Accuracy: 87% on Emotion Recognition**
+✅ **Accuracy: 93% on Emotion Recognition**
 📦 Based on robust models with **VGG-16** and **Augmented CNNs**.
 
 ---
@@ -103,7 +103,7 @@ EDA scripts are located in the `eda/` section (or embedded within Jupyter notebo
 
    * Enhanced architecture with improved regularization
    * Optimizer tuned (Adam with learning rate decay)
-   * Final accuracy: **87%**
+   * Final accuracy: **93%**
 
 ### Gesture Recognition Model
 ### ✋
@@ -120,9 +120,9 @@ EDA scripts are located in the `eda/` section (or embedded within Jupyter notebo
 ### 📊
 | Model           | Accuracy | Method             |
 | --------------- | -------- | ------------------ |
-| emotions\_train | \~82%    | CNN + Augmentation |
-| emotions\_final | **87%**  | Enhanced CNN       |
-| gestures\_train | \~85%    | VGG-16 + Custom FC |
+| emotions\_train | \~85%    | CNN + Augmentation |
+| emotions\_final | **93%**  | Enhanced CNN       |
+| gestures\_train | \~89%    | VGG-16 + Custom FC |
 
 ---
 
