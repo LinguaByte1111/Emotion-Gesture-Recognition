@@ -1,3 +1,4 @@
+# Import necessary libraries
 from keras.models import load_model
 from time import sleep
 from keras.preprocessing.image import img_to_array
@@ -5,9 +6,13 @@ from keras.preprocessing import image
 import cv2
 import numpy as np
 
+# Load Haar Cascade face detection model
 face_classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+
+# Load the pre-trained emotion detection model
 classifier =load_model('./Emotion_Detection.h5')
 
+# Define the labels corresponding to the output classes of the model
 class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
 
 cap = cv2.VideoCapture(0)
