@@ -15,6 +15,7 @@ classifier =load_model('./Emotion_Detection.h5')
 # Define the labels corresponding to the output classes of the model
 class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
 
+# Start video capture from the default webcam
 cap = cv2.VideoCapture(0)
 
 
