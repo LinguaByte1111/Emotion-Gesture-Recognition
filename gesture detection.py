@@ -57,7 +57,7 @@ while True:
 
     cv2.imshow("Output", frame) 
     
-    #
+    # press 'q' to end
     if cv2.waitKey(1) == ord('q'):
         break
 
