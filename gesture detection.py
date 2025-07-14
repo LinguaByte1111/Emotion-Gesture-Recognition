@@ -25,9 +25,11 @@ cap = cv2.VideoCapture(0)
 while True:
     # Read a frame from the webcam
     _, frame = cap.read()
-
+    
+    # Get frame dimensions
     x, y, c = frame.shape
 
+    # Flip the frame horizontally for a mirror-like effect
     frame = cv2.flip(frame, 1)
     framergb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
