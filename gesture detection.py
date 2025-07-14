@@ -35,18 +35,21 @@ while True:
 
     # Convert the image to RGB format for Mediapipe processing
     result = hands.process(framergb)    
-    className = ''
+    className = '' # Initialize gesture name
 
+    # Process the frame to detect hands
     if result.multi_hand_landmarks:
-        landmarks = []
+        landmarks = [] # List to hold hand landmark coordinates
         for handslms in result.multi_hand_landmarks:
             for lm in handslms.landmark:
 
+                # Convert normalized coordinates to pixel values
                 lmx = int(lm.x * x)
                 lmy = int(lm.y * y)
 
-                landmarks.append([lmx, lmy])
+                landmarks.append([lmx, lmy]) # Append each landmark
 
+            # Draw hand landmarks on the frame
             mpDraw.draw_landmarks(frame, handslms, mpHands.HAND_CONNECTIONS)
 
             prediction = model.predict([landmarks])
