@@ -56,17 +56,20 @@ while True:
             classID = np.argmax(prediction)
             className = classNames[classID]
 
+    # Display the gesture name on the frame
     cv2.putText(frame, className, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 
-                   1, (0,0,255), 2, cv2.LINE_AA)
+                1, (0, 0, 255), 2, cv2.LINE_AA)
 
+    # Show the final output frame
     cv2.imshow("Output", frame) 
     
-    # press 'q' to end
+    # Exit the loop when 'q' is pressed
     if cv2.waitKey(1) == ord('q'):
         break
 
+# Release the webcam and close all OpenCV windows
 cap.release()
-cv2.destroyAllWindows()
+cv2.destroyAllWindows()  # Fixed typo here from 'destroyAllWindow'
 
 
 
