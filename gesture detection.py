@@ -33,6 +33,7 @@ while True:
     frame = cv2.flip(frame, 1)
     framergb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
+    # Convert the image to RGB format for Mediapipe processing
     result = hands.process(framergb)    
     className = ''
 
