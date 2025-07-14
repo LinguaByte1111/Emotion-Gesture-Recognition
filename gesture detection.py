@@ -13,19 +13,17 @@ mpDraw = mp.solutions.drawing_utils
 # Load pre-trained gesture recognition model
 model = load_model('mp_hand_gesture')
 
+# Load gesture class names from file
 f = open('gesture.names', 'r')
-classNames = f.read().split('\n')
+classNames = f.read().split('\n') # Read each gesture name
 f.close()
-print(classNames)
+print(classNames) # Print gesture names for verification
 
-
-
+# Start webcam
 cap = cv2.VideoCapture(0)
 
-
-
 while True:
-
+    # Read a frame from the webcam
     _, frame = cap.read()
 
     x, y, c = frame.shape
