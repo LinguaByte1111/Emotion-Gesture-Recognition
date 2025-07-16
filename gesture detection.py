@@ -70,8 +70,3 @@ while True:
 # Release the webcam and close all OpenCV windows
 cap.release()
 cv2.destroyAllWindows()  # Fixed typo here from 'destroyAllWindow'
-
-
-
-
-
