@@ -63,10 +63,15 @@ while True:
             # If no face is found, display a message
             cv2.putText(frame,'No Face Found',(20,60),cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
         print("\n\n")
+
+    # Display the frame with annotations
     cv2.imshow('Emotion Detector',frame)
+
+    # Break the loop if the user presses 'q'
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+# Release the video capture object and close all OpenCV windows
 cap.release()
 cv2.destroyAllWindows()
 
