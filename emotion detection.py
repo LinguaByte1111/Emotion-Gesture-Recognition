@@ -36,22 +36,31 @@ while True:
         
         # Extract the region of interest (ROI) which is the face area
         roi_gray = gray[y:y+h,x:x+w]
+
+        # Resize ROI to 48x48 which is the input size expected by the model
         roi_gray = cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
 
-
+        # Ensure the ROI is not empty
         if np.sum([roi_gray])!=0:
+            # Normalize the ROI pixels and convert to array
             roi = roi_gray.astype('float')/255.0
             roi = img_to_array(roi)
-            roi = np.expand_dims(roi,axis=0)
+            roi = np.expand_dims(roi,axis=0)  # Add batch dimension
 
+            # Predict the emotion from the ROI using the loaded model
             preds = classifier.predict(roi)[0]
             print("\nprediction = ",preds)
+
+            # Get the label with the highest probability
             label=class_labels[preds.argmax()]
             print("\nprediction max = ",preds.argmax())
             print("\nlabel = ",label)
+
+            # Display the predicted label on the original frame
             label_position = (x,y)
             cv2.putText(frame,label,label_position,cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
         else:
+            # If no face is found, display a message
             cv2.putText(frame,'No Face Found',(20,60),cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
         print("\n\n")
     cv2.imshow('Emotion Detector',frame)
