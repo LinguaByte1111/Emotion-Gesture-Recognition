@@ -19,15 +19,22 @@ class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
 cap = cv2.VideoCapture(0)
 
 
-#
+# Start the main loop to process video frames continuously
 while True:
+    # Capture each frame from the video stream
     ret, frame = cap.read()
     labels = []
+    # Convert the captured frame to grayscale as the classifier expects gray images
     gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+    # Detect faces in the frame using the Haar Cascade model
     faces = face_classifier.detectMultiScale(gray,1.3,5)
 
+    # Loop through each detected face
     for (x,y,w,h) in faces:
+        # Draw a rectangle around the face
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
+        
+        # Extract the region of interest (ROI) which is the face area
         roi_gray = gray[y:y+h,x:x+w]
         roi_gray = cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
 
