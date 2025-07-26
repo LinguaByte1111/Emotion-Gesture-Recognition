@@ -70,6 +70,7 @@ validation_datagen = ImageDataGenerator(rescale=1./255)
 # Batch size for training
 batch_size = 32
 
+# Load training data using flow_from_directory (assumes folder structure with subfolders for each class)
 train_generator = train_datagen.flow_from_directory(
                         train_data_dir,
                         target_size = (img_rows,img_cols),
