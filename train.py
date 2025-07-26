@@ -91,11 +91,14 @@ from keras.callbacks import ModelCheckpoint,EarlyStopping,ReduceLROnPlateau
 
 # Checkpoint callback: Save the best model based on validation loss
 checkpoint = ModelCheckpoint(
-                             'emotion_face_mobilNet.h5',
-                             monitor='val_loss',
-                             mode='min',
-                             save_best_only=True,
-                             verbose=1)
+    'emotion_face_mobilNet.h5',  # Save model to this file
+    monitor='val_loss',  # Monitor validation loss for improvement
+    mode='min',  # Save model with minimum validation loss
+    save_best_only=True,  # Save only the best model
+    verbose=1  # Print when a new best model is saved
+)
+
+# Early stopping callback: Stop training if no improvement in validation loss for 10 epochs
 
 earlystop = EarlyStopping(
                           monitor='val_loss',
