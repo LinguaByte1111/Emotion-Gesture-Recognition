@@ -64,6 +64,7 @@ train_datagen = ImageDataGenerator(
                     fill_mode='nearest'
                                    )
 
+# Validation data is only rescaled without augmentation
 validation_datagen = ImageDataGenerator(rescale=1./255)
 
 batch_size = 32
