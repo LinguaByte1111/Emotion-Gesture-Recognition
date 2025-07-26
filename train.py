@@ -78,6 +78,7 @@ train_generator = train_datagen.flow_from_directory(
                         class_mode = 'categorical'  # Categorical labels for multi-class classification
                         )
 
+# Load validation data using flow_from_directory
 validation_generator = validation_datagen.flow_from_directory(
                             validation_data_dir,
                             target_size=(img_rows,img_cols),
