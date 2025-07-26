@@ -67,7 +67,7 @@ train_datagen = ImageDataGenerator(
 # Validation data is only rescaled without augmentation
 validation_datagen = ImageDataGenerator(rescale=1./255)
 
-
+# Batch size for training
 batch_size = 32
 
 train_generator = train_datagen.flow_from_directory(
