@@ -99,38 +99,46 @@ checkpoint = ModelCheckpoint(
 )
 
 # Early stopping callback: Stop training if no improvement in validation loss for 10 epochs
-
 earlystop = EarlyStopping(
-                          monitor='val_loss',
-                          min_delta=0,
-                          patience=10,
-                          verbose=1,restore_best_weights=True)
+    monitor='val_loss',  # Monitor validation loss
+    min_delta=0,  # Minimum change to qualify as an improvement
+    patience=10,  # Stop after 10 epochs with no improvement
+    verbose=1,  # Print information about early stopping
+    restore_best_weights=True  # Restore model to best weights when stopping
+)
 
-learning_rate_reduction = ReduceLROnPlateau(monitor='val_acc', 
-                                            patience=5, 
-                                            verbose=1, 
-                                            factor=0.2, 
-                                            min_lr=0.0001)
+# Learning rate reduction callback: Reduce learning rate if validation accuracy plateaus
+learning_rate_reduction = ReduceLROnPlateau(
+    monitor='val_acc',  # Monitor validation accuracy for plateau
+    patience=5,  # Patience of 5 epochs before reducing the learning rate
+    verbose=1,  # Print when the learning rate is reduced
+    factor=0.2,  # Reduce learning rate by a factor of 0.2
+    min_lr=0.0001  # Minimum learning rate
+)
 
-callbacks = [earlystop,checkpoint,learning_rate_reduction]
+# List of callbacks to be used during training
+callbacks = [earlystop, checkpoint, learning_rate_reduction]
 
-model.compile(loss='categorical_crossentropy',
-              optimizer=Adam(lr=0.001),
-              metrics=['accuracy']
-              )
+# Compile the model with categorical crossentropy loss (for multi-class classification) and Adam optimizer
+model.compile(
+    loss='categorical_crossentropy',  # Loss function for multi-class classification
+    optimizer=Adam(lr=0.001),  # Adam optimizer with a learning rate of 0.001
+    metrics=['accuracy']  # Monitor accuracy during training
+)
 
-nb_train_samples = 24176
-nb_validation_samples = 3006
+# Define number of training and validation samples
+nb_train_samples = 24176  # Number of training samples
+nb_validation_samples = 3006  # Number of validation samples
 
+# Define number of epochs (iterations over the entire dataset)
 epochs = 25
 
+# Train the model using fit_generator method
 history = model.fit_generator(
-            train_generator,
-            steps_per_epoch=nb_train_samples//batch_size,
-            epochs=epochs,
-            callbacks=callbacks,
-            validation_data=validation_generator,
-            validation_steps=nb_validation_samples//batch_size)
-
-
-
+    train_generator,
+    steps_per_epoch=nb_train_samples // batch_size,  # Number of steps per epoch
+    epochs=epochs,  # Total number of epochs to train
+    callbacks=callbacks,  # Use the defined callbacks during training
+    validation_data=validation_generator,  # Validation data
+    validation_steps=nb_validation_samples // batch_size  # Number of validation steps per epoch
+)
