@@ -1,3 +1,4 @@
+# Importing necessary libraries for model creation and training
 from keras.applications import MobileNet
 from keras.models import Sequential,Model 
 from keras.layers import Dense,Dropout,Activation,Flatten,GlobalAveragePooling2D
@@ -8,6 +9,7 @@ from keras.preprocessing.image import ImageDataGenerator
 # MobileNet is designed to work with images of dim 224,224
 img_rows,img_cols = 224,224
 
+# Load MobileNet with pre-trained ImageNet weights (excluding the top layers for fine-tuning)
 MobileNet = MobileNet(weights='imagenet',include_top=False,input_shape=(img_rows,img_cols,3))
 
 # Here we freeze the last 4 layers
