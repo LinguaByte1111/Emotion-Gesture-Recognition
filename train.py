@@ -89,6 +89,7 @@ validation_generator = validation_datagen.flow_from_directory(
 from keras.optimizers import RMSprop,Adam
 from keras.callbacks import ModelCheckpoint,EarlyStopping,ReduceLROnPlateau
 
+# Checkpoint callback: Save the best model based on validation loss
 checkpoint = ModelCheckpoint(
                              'emotion_face_mobilNet.h5',
                              monitor='val_loss',
