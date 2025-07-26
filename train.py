@@ -39,8 +39,10 @@ def addTopModelMobileNet(bottom_model, num_classes):
 
     return top_model
 
+# Define number of classes (for emotion classification, 5 classes)
 num_classes = 5
 
+# Attach the custom top model to the MobileNet base
 FC_Head = addTopModelMobileNet(MobileNet, num_classes)
 
 model = Model(inputs = MobileNet.input, outputs = FC_Head)
