@@ -83,8 +83,9 @@ validation_generator = validation_datagen.flow_from_directory(
                             validation_data_dir,
                             target_size=(img_rows,img_cols),
                             batch_size=batch_size,
-                            class_mode='categorical')
+                            class_mode='categorical') # Categorical labels for multi-class classification
 
+# Import optimizers and callbacks
 from keras.optimizers import RMSprop,Adam
 from keras.callbacks import ModelCheckpoint,EarlyStopping,ReduceLROnPlateau
 
