@@ -45,10 +45,13 @@ num_classes = 5
 # Attach the custom top model to the MobileNet base
 FC_Head = addTopModelMobileNet(MobileNet, num_classes)
 
+# Define the complete model with MobileNet base + new top layers
 model = Model(inputs = MobileNet.input, outputs = FC_Head)
 
+# Print model summary to check the architecture
 print(model.summary())
 
+# Define paths for training and validation datasets
 train_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
 validation_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
 
