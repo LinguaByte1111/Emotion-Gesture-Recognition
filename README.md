@@ -43,8 +43,6 @@ fer2013.csv (Facial Emotion Dataset)
         │        ├── Image Extraction
         │        └── Normalization
         │
-        ├──> EDA (Emotion + Gesture)
-        │
         ├──> Model Training
         │       ├── emotions_train (Base Emotion Model)
         │       ├── gestures_train (VGG-16 Gesture Model)
